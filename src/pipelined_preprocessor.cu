@@ -20,8 +20,8 @@ namespace frame_preprocessor
         return value;
     }
 
-    PipelinedPreprocessor::PipelinedPreprocessor(int input_width, int input_height) : input_width_ (validated_dim(input_width, dMaxInputWidth, "input width")) 
-                                                                                    , input_height_(validated_dim(input_height, dMaxInputHeight, "input height"))
+    PipelinedPreprocessor::PipelinedPreprocessor(int input_width, int input_height) : input_width_ (validated_dim(input_width, dim_maxInputWidth, "input width")) 
+                                                                                    , input_height_(validated_dim(input_height, dim_maxInputHeight, "input height"))
                                                                                     , nv12_bytes_(nv12_size_bytes(input_width_, input_height_)) 
                                                                                     , d_rgb_(), d_in_{}, d_out_{}
                                                                                     , pinned_{}, copy_stream_(), compute_stream_(), copy_done_{} 
@@ -72,7 +72,7 @@ namespace frame_preprocessor
 
         launch_nv12_to_rgb(d_in_[slot].as<std::uint8_t>(), d_rgb_.as<std::uint8_t>(), input_width_, input_height_, compute_stream_.get());
 
-        launch_resize_normalize_transpose(d_rgb_.as<std::uint8_t>(), d_out_[slot].as<__half>(), input_width_, input_height_, dOutputWidth, dOutputHeight, compute_stream_.get());
+        launch_resize_normalize_transpose(d_rgb_.as<std::uint8_t>(), d_out_[slot].as<__half>(), input_width_, input_height_, dim_outputWidth, dim_outputHeight, compute_stream_.get());
 
         CHECK_CUDA(cudaEventRecord(compute_done_[slot].get(), compute_stream_.get()));
         primed_[slot] = true;

@@ -28,7 +28,7 @@ namespace frame_preprocessor
         #pragma unroll
         for(int c = 0; c < 3; ++c)
         {
-            const float v = src[si + c] * dNormScale(c) - dNormBias(c);
+            const float v = src[si + c] * dim_normScale(c) - dim_normBias(c);
             dst[c * plane + pix] = __float2half_rn(v);
         }
     }

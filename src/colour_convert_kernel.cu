@@ -10,7 +10,7 @@
 
 namespace frame_preprocessor
 {
-    __global__ nv12_to_rgb_u8(const uint8_t *__restrict__ nv12, uint8_t *__restrict__ rgb, int width, int height)
+    __global__ void nv12_to_rgb_u8(const uint8_t *__restrict__ nv12, uint8_t *__restrict__ rgb, int width, int height)
     {
         const int row = blockIdx.y * blockDim.y + threadIdx.y;
         const int col = blockIdx.x * blockDim.x + threadIdx.x;

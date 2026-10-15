@@ -27,8 +27,8 @@ namespace frame_preprocessor
         }
     }
 
-    Preprocessor::Preprocessor(int input_width, int input_height) : input_width_(validated_dim(input_width, dMaxInputWidth, "input width"))
-                                                              , input_height_(validated_dim(input_height, dMaxInputHeight, "input height"))
+    Preprocessor::Preprocessor(int input_width, int input_height) : input_width_(validated_dim(input_width, dim_maxInputWidth, "input width"))
+                                                              , input_height_(validated_dim(input_height, dim_maxInputHeight, "input height"))
                                                               , d_nv12_()
                                                               , d_rgb_()
                                                               , d_resized_()
@@ -40,7 +40,7 @@ namespace frame_preprocessor
     {
         d_nv12_    = DeviceBuffer(nv12_size_bytes(input_width, input_height_));
         d_rgb_     = DeviceBuffer(rgb_f32_size_bytes(input_width_, input_height_));
-        d_resized_ = DeviceBuffer(rgb_f32_size_bytes(dOutputWidth, dOutputHeight));
+        d_resized_ = DeviceBuffer(rgb_f32_size_bytes(dim_outputWidth, dim_outputHeight));
         d_output_  = DeviceBuffer(output_size_bytes());
         h_nv12_    = HostBuffer(nv12_size_bytes(input_width_, input_height_));
     }
@@ -51,7 +51,7 @@ namespace frame_preprocessor
 
         launch_nv12_to_rgb(d_nv12_.as<std::uint8_t>(), d_rgb_.as<std::uint8_t>(), input_width_, input_height_, stream_.get());
 
-        launch_resize_normalize_transpose(d_rgb_.as<std::uint8_t>(), d_output_.as<__half>(), input_width_, input_height_, dOutputWidth, dOutputHeight, stream_.get());
+        launch_resize_normalize_transpose(d_rgb_.as<std::uint8_t>(), d_output_.as<__half>(), input_width_, input_height_, dim_outputWidth, dim_outputHeight, stream_.get());
 
         return d_output_.as<__half>();
     }

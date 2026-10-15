@@ -35,7 +35,7 @@ namespace frame_preprocessor
 
             Event &operator = (Event&& other) noexcept
             {
-                if(this != other)
+                if(this != &other)
                 {
                     if(event_ != nullptr)
                         cudaEventDestroy(event_);
@@ -53,10 +53,10 @@ namespace frame_preprocessor
 
             void sync() const
             {
-                check_cuda(cudaEventSynchronize(event_));
+                CHECK_CUDA(cudaEventSynchronize(event_));
             }
 
-            static float elpased_ms(const Event &start, const Event &stop)
+            static float elapsed_ms(const Event &start, const Event &stop)
             {
                 float ms = 0.0f;
                 CHECK_CUDA(cudaEventElapsedTime(&ms, start.event_, stop.event_));
