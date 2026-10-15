@@ -7,7 +7,7 @@ RAII wrapper around cudaStream_t
 #include "checkcuda.hpp"
 #include <cuda_runtime.h>
 
-namespace frame_processor
+namespace frame_preprocessor
 {
     class Stream
     {

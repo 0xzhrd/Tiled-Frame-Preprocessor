@@ -1,0 +1,9 @@
+/build/
+assets/
+venv/
+.vscode/
+
+*.engine
+*.onnx
+*.pt
+*.deb

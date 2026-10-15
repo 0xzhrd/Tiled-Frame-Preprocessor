@@ -8,7 +8,7 @@ RAII wrapper for pinned host memory enables asynchronous host to device copies
 #include <cstddef>
 #include <cuda_runtime.h>
 
-namespace frame_processor
+namespace frame_preprocessor
 {
     class HostBuffer
     {

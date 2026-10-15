@@ -15,7 +15,7 @@ RAII wrapper for single stream preprocessing pipeline nv12 - rgb - resize-tranpo
 #include <cuda_runtime.h>
 #include <cuda_fp16.h>
 
-namespace frame_processor
+namespace frame_preprocessor
 {
     class Preprocessor
     {

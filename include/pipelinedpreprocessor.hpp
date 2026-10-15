@@ -12,7 +12,7 @@ double buffered preprocessing pipeline, runs the two kernels from (kernels.hpp) 
 #include <cstdint>
 #include <cuda_fp16.h>
 
-namespace frame_processor
+namespace frame_preprocessor
 {
     class PipelinedPreprocessor
     {

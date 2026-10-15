@@ -10,7 +10,7 @@ takes float32 RGB from HWC to planar fp16 CHW format for network input
 #include <cuda_fp16.h>
 #include <cuda_runtime.h>
 
-namespace frame_processor
+namespace frame_preprocessor
 {
     __global__ void normalize_transpose_rgb_f32_to_fp16(const float *__restrict__ src, __half *__restrict__ dst, int W, int H)
     {
@@ -69,7 +69,7 @@ namespace frame_processor
             const float p11 = __ldg(&src[(row1 + x1) * 3 + c]);
             const float top = p00 + (p01 - p00) * wx;
             const float bot = p10 + (p11 - p10) * wx;
-            const float v   = (top + (bot - top) * wy) * dNormScale(c) - dNormBias(c);
+            const float v   = (top + (bot - top) * wy) * dim_normScale(c) - dim_normBias(c);
             dst[c * plane + o] = __float2half_rn(v);  
         }
     }

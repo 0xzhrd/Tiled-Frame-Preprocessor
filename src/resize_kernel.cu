@@ -49,13 +49,4 @@ namespace frame_preprocessor
             dst[o + c]      = top + (bot - top) * wy;
         }
     }
-
-    /*void launch_resize_biliner(const float *src, float *dst, int in_w, int in_h, int out_w, int out_h, cudaStream_t stream)
-    {
-        const dim3 block(kTileX, kTileY);
-        const dim3 grid((out_w + kTileX - 1) / kTileX, (out_h + kTileY - 1) / kTileY);
-        
-        resize_bilinear_rgb_f32 <<<grid, block, 0, stream>>> (src, dst, in_w, in_h, out_w, out_h);
-        CHECK_CUDA(cudaGetLastError());
-    }*/
 }
