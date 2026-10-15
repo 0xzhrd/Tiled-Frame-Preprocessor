@@ -99,7 +99,7 @@ int main(int argc, char **argv)
         e2e_ms.push_back(std::chrono::duration<double, std::milli>(t1 - t0).count());
     }
 
-    std::printf("Eagle Eye preprocessor  %dx%d -> %dx%d iters=%d warmup=%d\n",
+    std::printf("Tiled Frame Preprocessor  %dx%d -> %dx%d iters=%d warmup=%d\n",
                 W, H, dim_outputWidth, dim_outputHeight, iters, warmup);
     report("gpu_pipeline", gpu_ms);
     report("end_to_end", e2e_ms);
