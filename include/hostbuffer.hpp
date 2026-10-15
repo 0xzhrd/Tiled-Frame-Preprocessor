@@ -4,7 +4,7 @@ RAII wrapper for pinned host memory enables asynchronous host to device copies
 
 #pragma once
 
-#include "checkCuda.hpp"
+#include "checkcuda.hpp"
 #include <cstddef>
 #include <cuda_runtime.h>
 
