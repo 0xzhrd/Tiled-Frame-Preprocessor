@@ -1,3 +1,8 @@
+/*
+proof that the GPU produces the right tensor, runs a frame through the full CUDA pipeline(NV12 -> RGB -> normalize, resize, transpose Kernel -> fp16)
+AND runs the same frame through opencv's reference
+*/
+
 #include "config.hpp"
 #include "checkcuda.hpp"
 #include "preprocessor.hpp"

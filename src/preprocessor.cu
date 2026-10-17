@@ -1,3 +1,8 @@
+/*
+this is essentially the single buffer/synchronous mode that would help with future profiling and optimization
+(4 steps:: stage, copy, compute, sync)
+*/
+
 #include "kernels.hpp"
 #include "preprocessor.hpp"
 #include <string>

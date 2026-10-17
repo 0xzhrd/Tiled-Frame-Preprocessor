@@ -4,7 +4,6 @@ takes float32 RGB from HWC to planar fp16 CHW format for network input
 
 #include "config.hpp"
 #include "checkcuda.hpp"
-//#include "preprocessor.hpp"
 
 #include <cstdint>
 #include <cuda_fp16.h>
